@@ -22,7 +22,6 @@ resource "aws_route53_record" "tokyo_r53" {
   zone_id = module.asg.asg_alb_hosted_zone_id
   name    = "example.com"
   type    = "A"
-
   alias {    
     name                   = module.asg.asg_alb_dns_name
     zone_id                = module.asg.asg_alb_hosted_zone_id
