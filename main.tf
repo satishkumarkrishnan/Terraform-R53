@@ -11,3 +11,21 @@ terraform {
 module "vpc" {
   source ="git@github.com:satishkumarkrishnan/terraform-aws-vpc.git?ref=main"
   }
+
+module "asg" {
+  source="git@github.com:satishkumarkrishnan/terraform-aws-asg.git?ref=main"  
+  depends_on = [module.vpc]
+}
+  
+#TF code for R53 creation 
+/*resource "aws_route53_record" "tokyo_r53" {
+  zone_id = aws_route53_zone.primary.zone_id
+  name    = "example.com"
+  type    = "A"
+
+  alias {
+    name                   = aws_elb.main.dns_name
+    zone_id                = aws_elb.main.zone_id
+    evaluate_target_health = true
+  }
+}*/
