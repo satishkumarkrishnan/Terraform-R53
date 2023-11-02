@@ -27,4 +27,5 @@ resource "aws_route53_record" "tokyo_r53" {
     zone_id                = module.asg.asg_alb_hosted_zone_id
     evaluate_target_health = true
   }
+  depends_on = [module.asg]
 }
