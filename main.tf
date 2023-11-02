@@ -18,14 +18,14 @@ module "asg" {
 }
   
 #TF code for R53 creation 
-/*resource "aws_route53_record" "tokyo_r53" {
-  zone_id = aws_route53_zone.primary.zone_id
+resource "aws_route53_record" "tokyo_r53" {
+  zone_id = module.asg.asg_alb_hosted_zone_id
   name    = "example.com"
   type    = "A"
 
-  alias {
-    name                   = aws_elb.main.dns_name
-    zone_id                = aws_elb.main.zone_id
+  alias {    
+    name                   = module.asg.asg_alb_dns_name
+    zone_id                = module.asg.asg_alb_hosted_zone_id
     evaluate_target_health = true
   }
-}*/
+}
