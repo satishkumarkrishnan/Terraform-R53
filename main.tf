@@ -19,12 +19,12 @@ module "asg" {
   
 # TF code for R53 zone ID creation
 resource "aws_route53_zone" "tokyo_zone"  {
-  name = "example.com"
+  name = "myfirstr53.com"
 }
 #TF code for R53 creation 
 resource "aws_route53_record" "tokyo_r53" {
   zone_id = aws_route53_zone.tokyo_zone.zone_id
-  name    = "example.com"
+  name    = "myfirstr53.com"
   type    = "A"
   alias {    
     name                   = module.asg.asg_alb_dns_name
