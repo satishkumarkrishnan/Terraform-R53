@@ -17,9 +17,13 @@ module "asg" {
   depends_on = [module.vpc]
 }
   
+# TF code for R53 zone ID creation
+resource "aws_route53_zone" "tokyo_zone"  {
+  name = "example.com"
+}
 #TF code for R53 creation 
 resource "aws_route53_record" "tokyo_r53" {
-  zone_id = module.asg.asg_alb_hosted_zone_id
+  zone_id = aws_route53_zone.tokyo_zone.zone_id
   name    = "example.com"
   type    = "A"
   alias {    
