@@ -20,6 +20,8 @@ module "asg" {
 # TF code for R53 zone ID creation
 resource "aws_route53_zone" "tokyo_zone"  {
   name = "myfirstr53.com"
+  depends_on = [module.asg]
+
 }
 #TF code for R53 creation 
 resource "aws_route53_record" "tokyo_r53" {
